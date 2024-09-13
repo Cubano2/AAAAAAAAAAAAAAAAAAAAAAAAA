@@ -4,20 +4,35 @@ public class PCMania {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        //matrícula do aluno Bruno Rezende Higino de Cuba
         int matricula = 9834;
 
-        // Promoções
-        PCs promo1 = new PCs("Positivo", new HardwareBasico("Pentium", 2200), new HardwareBasico("Memória RAM", 8),
-                new HardwareBasico("HD", 500), new SistemaOperacional("Linux Ubuntu", 32),
-                new MemoriaUSB("Pen-drive", 16), matricula);
+        // Promoção 1: Criar o array de hardwares e passá-lo para o PC
+        HardwareBasico[] hardwaresPromo1 = {
+                new HardwareBasico("Processador Pentium", 2200),
+                new HardwareBasico("Memória RAM", 8),
+                new HardwareBasico("HD", 500)
+        };
+        PC promo1 = new PC("Positivo", hardwaresPromo1, new SistemaOperacional("Linux Ubuntu", 32), matricula);
+        promo1.addMusb(new MemoriaUSB("Pen-drive", 16));
 
-        PCs promo2 = new PCs("Acer", new HardwareBasico("Core i5", 3370), new HardwareBasico("Memória RAM", 16),
-                new HardwareBasico("HD", 1000), new SistemaOperacional("Windows 8", 64),
-                new MemoriaUSB("Pen-drive", 32), matricula + 1234);
+        // Promoção 2: Criar o array de hardwares e passá-lo para o PC
+        HardwareBasico[] hardwaresPromo2 = {
+                new HardwareBasico("Processador Core i5", 3370),
+                new HardwareBasico("Memória RAM", 16),
+                new HardwareBasico("HD", 1000)
+        };
+        PC promo2 = new PC("Acer", hardwaresPromo2, new SistemaOperacional("Windows 8", 64), matricula + 1234);
+        promo2.addMusb(new MemoriaUSB("Pen-drive", 32));
 
-        PCs promo3 = new PCs("Vaio", new HardwareBasico("Core i7", 4500), new HardwareBasico("Memória RAM", 32),
-                new HardwareBasico("HD", 2000), new SistemaOperacional("Windows 10", 64),
-                new MemoriaUSB("HD Externo", 1000), matricula + 5678);
+        // Promoção 3: Criar o array de hardwares e passá-lo para o PC
+        HardwareBasico[] hardwaresPromo3 = {
+                new HardwareBasico("Processador Core i7", 4500),
+                new HardwareBasico("Memória RAM", 32),
+                new HardwareBasico("HD", 2000)
+        };
+        PC promo3 = new PC("Vaio", hardwaresPromo3, new SistemaOperacional("Windows 10", 64), matricula + 5678);
+        promo3.addMusb(new MemoriaUSB("HD Externo", 1000));
 
         // Criar cliente
         System.out.print("Digite seu nome: ");

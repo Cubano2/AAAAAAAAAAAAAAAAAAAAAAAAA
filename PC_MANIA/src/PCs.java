@@ -1,29 +1,33 @@
-class PCs {
+class PC {
     String marca;
-    HardwareBasico processador;
-    HardwareBasico memoria;
-    HardwareBasico hd;
+    HardwareBasico[] hardwares; // Array para os hardwares
     SistemaOperacional so;
     MemoriaUSB usb;
     double preco;
 
-    public PCs(String marca, HardwareBasico processador, HardwareBasico memoria, HardwareBasico hd, SistemaOperacional so, MemoriaUSB usb, double preco) {
+    // Construtor atualizado
+    public PC(String marca, HardwareBasico[] hardwares, SistemaOperacional so, double preco) {
         this.marca = marca;
-        this.processador = processador;
-        this.memoria = memoria;
-        this.hd = hd;
+        this.hardwares = hardwares;
         this.so = so;
-        this.usb = usb;
         this.preco = preco;
+    }
+
+    // Adicionar Musb
+    public void addMusb(MemoriaUSB usb) {
+        this.usb = usb;
     }
 
     public void exibirPC() {
         System.out.println("Marca: " + marca);
-        System.out.println("Processador: " + processador.nome + " - " + processador.capacidade + "Mhz");
-        System.out.println("Memória RAM: " + memoria.capacidade + "GB");
-        System.out.println("HD: " + hd.capacidade + "GB");
+        System.out.println("Componentes de hardware:");
+        for (HardwareBasico hardware : hardwares) {
+            System.out.println(hardware.nome + " - " + hardware.capacidade + "Mhz/GB");
+        }
         System.out.println("Sistema Operacional: " + so.nome + " (" + so.tipo + "-bits)");
-        System.out.println("Memória USB: " + usb.nome + " - " + usb.capacidade + "GB");
+        if (usb != null) {
+            System.out.println("Memória USB: " + usb.nome + " - " + usb.capacidade + "GB");
+        }
         System.out.println("Preço: R$ " + preco);
     }
 }
